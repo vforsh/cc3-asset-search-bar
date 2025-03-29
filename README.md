@@ -2,7 +2,7 @@
 
 Asset Search Bar is a free extension for Cocos Creator 3.x, it allows you to quickly search and open assets in your project.
 
-![video](./screenshots/asb-video.gif)
+![video](https://github.com/vforsh/cc3-asset-search-bar/blob/main/screenshots/asb-video.gif?raw=true)
 
 
 ## Key Features
@@ -16,26 +16,24 @@ Asset Search Bar is a free extension for Cocos Creator 3.x, it allows you to qui
 
 ## Screenshots
 
-![recent-items](./screenshots/recent-items.png)
+![recent-items](https://github.com/vforsh/cc3-asset-search-bar/blob/main/screenshots/recent-items.png?raw=true)
 
-![search-2](./screenshots/search-2.png)
+![search-2](https://github.com/vforsh/cc3-asset-search-bar/blob/main/screenshots/search-2.png?raw=true)
 
-![search-3](./screenshots/search-3.png)
+![search-3](https://github.com/vforsh/cc3-asset-search-bar/blob/main/screenshots/search-3.png?raw=true)
 
-![settings](./screenshots/settings.png)
+![settings](https://github.com/vforsh/cc3-asset-search-bar/blob/main/screenshots/settings.png?raw=true)
 
 
 ## Download & Installation
 
 ### Install from Cocos Store
 
+**NOT AVAILABLE YET - STAY TUNED**
+
 To install the extension from Cocos Store, click on *Extension -> Cocos Store* option to open the Cocos Store.
 
 Enter "**Asset Search Bar**" in the search bar, find it and then install it.
-
-![cocos-store](./screenshots/cocos-store.png)
-
-*Asset Search Bar: [http://store.cocos.com/app/detail/2745](http://store.cocos.com/app/detail/2745)*
 
 
 ### Download from git repository
