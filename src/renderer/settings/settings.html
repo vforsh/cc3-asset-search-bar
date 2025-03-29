@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="settings.css">
+    <!-- Scripts -->
+    <script type="text/javascript" src="../../../lib/vue.global.prod.js" defer></script>
+    <script type="text/javascript" src="settings.js" defer></script>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- Header -->
+        <div class="header">
+            <div class="title">{{ t('settings') }}</div>
+            <button class="close-btn" @click="onCloseClick">×</button>
+        </div>
+        <!-- Configuration -->
+        <div class="properties">
+            <!-- Asset Types -->
+            <div class="property">
+                <div class="label">
+                    <div class="title-group">
+                        <span class="text">{{ t('openable') }}</span>
+                        <span class="subtitle">{{ t('openableTooltip') }}</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="openable">
+                        <div class="item" v-for="(item, index) in OPENABLE_LIST" :key="index" @click="onOpenableChanged($event, item, true)">
+                            <input class="checkbox" type="checkbox" :checked="openable.indexOf(item.ext) !== -1"
+                                @click.stop />
+                            <div class="type">{{ `${item.type} (${item.ext})` }}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Select Keyboard Shortcut -->
+            <div class="property">
+                <div class="label">
+                    <div class="title-group">
+                        <span class="text">{{ t('selectKey') }}</span>
+                        <span class="subtitle">{{ t('selectKeyTooltip') }}</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <select v-model="selectKey">
+                        <option v-for="item in presets.slice(0, 2)" :key="item.key" :value="item.key">{{ item.name }}</option>
+                        <option disabled> </option> <!-- divider -->
+                        <option v-for="item in presets.slice(2)" :key="item.key" :value="item.key">{{ item.name }}</option>
+                    </select>
+                </div>
+            </div>
+            <!-- Custom Keyboard Shortcut -->
+            <div class="property">
+                <div class="label">
+                    <div class="title-group">
+                        <div class="text-with-icon">
+                            <span class="text">{{ t('customKey') }}</span>
+                            <a href="https://www.electronjs.org/docs/api/accelerator" target="_blank" class="info-icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-info"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+                            </a>
+                        </div>
+                        <span class="subtitle">{{ t('customKeyTooltip') }}</span>
+                    </div>
+                </div>
+                <div class="content">
+                    <input type="text" v-model="customKey" :placeholder="t('customKeyPlaceholder')" :disabled="isCustomKeyDisabled" />
+                </div>
+            </div>
+            <div class="line"></div>
+            <!-- Apply Button -->
+            <button class="apply-btn" @click="onApplyBtnClick">{{ t('apply') }}</button>
+        </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,432 @@
+:root {
+	/* Cocos Creator color scheme - matching search window */
+	--main-color: #2a2e36;
+	--secondary-color: #1e2227;
+	--font-color: #e8e8e8;
+	--accent-color: #7b68ee;
+	--border-color: #3a3f47;
+	--btn-active-color: #6a5acd;
+	--error-color: #ff4757;
+	--hover-color: #3a3f47;
+	--input-bg: #1e2227;
+	--subtitle-color: #8a8a8a;
+}
+
+* {
+	box-sizing: border-box;
+	font-family: BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell,
+		SourceHanSansCN-Normal, Arial, sans-serif;
+}
+
+body {
+	margin: 0;
+	padding: 15px;
+	background-color: transparent;
+	color: var(--font-color);
+	user-select: none;
+	width: 100vw;
+	height: 100vh;
+	overflow: hidden;
+}
+
+#app {
+	width: 100%;
+	height: 100%;
+	background-color: var(--main-color);
+	border-radius: 12px;
+	border: 2px solid var(--border-color);
+	padding: 20px;
+	box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Header */
+.header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 24px;
+}
+
+/* Title */
+.title {
+	font-size: 20px;
+	font-weight: 600;
+	color: var(--font-color);
+}
+
+/* Close button */
+.close-btn {
+	width: 24px;
+	height: 24px;
+	border: none;
+	background: none;
+	color: var(--font-color);
+	font-size: 24px;
+	line-height: 1;
+	cursor: pointer;
+	opacity: 0.6;
+	transition: opacity 0.2s ease;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0;
+	margin: 0;
+}
+
+.close-btn:hover {
+	opacity: 1;
+}
+
+/* Properties container */
+.properties {
+	overflow: visible;
+}
+
+/* Property item */
+.property {
+	margin-bottom: 24px;
+}
+
+/* Title group */
+.title-group {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+/* Text with icon */
+.text-with-icon {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+/* Info icon */
+.info-icon {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--subtitle-color);
+	transition: color 0.2s ease;
+	padding: 2px;
+	border-radius: 4px;
+}
+
+.info-icon:hover {
+	color: var(--accent-color);
+}
+
+.info-icon svg {
+	width: 14px;
+	height: 14px;
+}
+
+.title-group .text {
+	font-size: 14px;
+	font-weight: 500;
+	color: var(--font-color);
+}
+
+.title-group .subtitle {
+	font-size: 12px;
+	color: var(--subtitle-color);
+}
+
+/* File types */
+.openable {
+	height: 156px !important;
+	border: 2px solid var(--border-color);
+	border-radius: 8px;
+	background-color: var(--secondary-color);
+	padding: 8px;
+	box-shadow: inset 0 0 8px 2px rgba(0, 0, 0, 0.1);
+	overflow-y: auto;
+	margin-top: 8px;
+}
+
+/* Scrollbar styling */
+.openable::-webkit-scrollbar {
+	width: 4px;
+}
+
+.openable::-webkit-scrollbar-track {
+	background-color: transparent;
+	margin: 4px 0;
+}
+
+.openable::-webkit-scrollbar-thumb {
+	background-color: var(--border-color);
+	border-radius: 2px;
+}
+
+.openable::-webkit-scrollbar-thumb:hover {
+	background-color: var(--accent-color);
+}
+
+/* File type item */
+.openable .item {
+	height: 28px;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	padding: 0 4px;
+	border-radius: 4px;
+	transition: background-color 0.2s ease;
+	cursor: pointer;
+}
+
+.openable .item:hover {
+	background-color: var(--hover-color);
+}
+
+/* Checkbox */
+.openable .item .checkbox {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	margin: 0 8px;
+	cursor: pointer;
+	border: 2px solid var(--border-color);
+	border-radius: 6px;
+	background-color: var(--secondary-color);
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.openable .item .checkbox:checked {
+	background-color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+.openable .item .checkbox:checked::after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	top: 0px;
+	width: 6px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.openable .item .checkbox:hover {
+	border-color: var(--accent-color);
+}
+
+/* File type text */
+.openable .item .type {
+	font-size: 13px;
+	color: var(--font-color);
+	cursor: pointer;
+	user-select: none;
+}
+
+/* Select and input fields */
+select,
+input[type='text'] {
+	width: 100%;
+	height: 32px;
+	padding: 0 12px;
+	background-color: var(--secondary-color);
+	border: 2px solid var(--border-color);
+	border-radius: 8px;
+	color: var(--font-color);
+	font-size: 14px;
+	outline: none;
+	transition: all 0.2s ease;
+	appearance: none;
+	-webkit-appearance: none;
+}
+
+/* Custom select arrow */
+select {
+	background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='12' height='12' viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.5 4.5L6 8L9.5 4.5' stroke='%23E8E8E8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 12px center;
+	padding-right: 32px;
+}
+
+/* Select divider */
+select option[disabled] {
+	color: var(--border-color);
+	font-size: 11px;
+	padding: 4px 0;
+	text-align: center;
+	border: none;
+	margin: 4px -12px;
+	background-color: var(--secondary-color);
+	border-top: 1px solid var(--border-color);
+	border-bottom: 1px solid var(--border-color);
+}
+
+/* Select option padding */
+select option {
+	padding: 8px 12px;
+}
+
+select:hover,
+input[type='text']:hover {
+	background-color: var(--hover-color);
+}
+
+select:focus,
+input[type='text']:focus {
+	border-color: var(--accent-color);
+	background-color: var(--hover-color);
+}
+
+/* Input hover and disabled states */
+input[type='text']:not(:disabled):hover {
+	border-color: var(--accent-color);
+	background-color: var(--hover-color);
+}
+
+input[type='text']:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	border-color: var(--border-color);
+}
+
+input[type='text']:not(:disabled):focus {
+	border-color: var(--accent-color);
+	box-shadow: 0 0 0 2px rgba(123, 104, 238, 0.2);
+}
+
+/* Custom key input */
+input[type='text'] {
+	width: 100%;
+	background-color: var(--secondary-color) !important;
+	letter-spacing: 0.5px;
+	-webkit-appearance: none;
+	appearance: none;
+}
+
+input[type='text']::placeholder {
+	color: var(--subtitle-color);
+	opacity: 0.7;
+}
+
+/* Property content */
+.property .content {
+	width: 100%;
+}
+
+/* Checkbox wrapper */
+.checkbox-wrapper {
+	display: flex;
+	align-items: center;
+	margin-top: 8px;
+}
+
+/* Checkbox label */
+.checkbox-label {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	cursor: pointer;
+	user-select: none;
+}
+
+/* Checkbox input */
+.checkbox-label input[type='checkbox'] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 20px;
+	height: 20px;
+	margin: 0;
+	cursor: pointer;
+	border: 2px solid var(--border-color);
+	border-radius: 6px;
+	background-color: var(--secondary-color);
+	position: relative;
+	transition: all 0.2s ease;
+}
+
+.checkbox-label input[type='checkbox']:checked {
+	background-color: var(--accent-color);
+	border-color: var(--accent-color);
+}
+
+.checkbox-label input[type='checkbox']:checked::after {
+	content: '';
+	position: absolute;
+	left: 4px;
+	top: 0px;
+	width: 6px;
+	height: 10px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+/* Checkbox text */
+.checkbox-label span {
+	color: var(--font-color);
+	font-size: 14px;
+	line-height: 20px;
+}
+
+/* Content spacing */
+.content {
+	margin-top: 8px;
+}
+
+/* Property spacing */
+.property:not(:last-child) {
+	margin-bottom: 24px;
+}
+
+/* Tips */
+.tip {
+	margin: 12px 0;
+	font-size: 12px;
+	color: var(--font-color);
+	opacity: 0.8;
+}
+
+.tip a {
+	color: var(--accent-color);
+	text-decoration: none;
+	margin-left: 4px;
+}
+
+.tip a:hover {
+	text-decoration: underline;
+}
+
+/* Line separator */
+.line {
+	height: 1px;
+	background-color: var(--border-color);
+	margin: 20px 0;
+}
+
+/* Apply button */
+.apply-btn {
+	width: 100%;
+	height: 40px;
+	background-color: var(--accent-color);
+	border: none;
+	border-radius: 8px;
+	color: var(--font-color);
+	font-size: 16px;
+	font-weight: 600;
+	cursor: pointer;
+	transition:
+		background-color 0.2s ease,
+		transform 0.1s ease;
+}
+
+.apply-btn:hover {
+	background-color: var(--btn-active-color);
+}
+
+.apply-btn:active {
+	transform: scale(0.98);
+}
+
+[v-cloak] {
+	display: none;
+}

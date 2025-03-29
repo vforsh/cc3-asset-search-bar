@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="./search.css">
+    <!-- Scripts -->
+    <script type="text/javascript" src="../../../lib/vue.global.prod.js" defer></script>
+    <script type="text/javascript" src="./search.js" defer></script>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <!-- Layout -->
+        <div class="layout">
+            <!-- Search -->
+            <div class="search" role="search">
+                <!-- Input field -->
+                <input 
+                    ref="input" 
+                    class="input" 
+                    type="text"
+                    v-model="keyword" 
+                    :placeholder="t('searchPlaceholder')"
+                    :aria-label="t('searchPlaceholder')"
+                    @input="onInputChange" 
+                    @keydown.enter="onEnterBtnClick" 
+                    @keydown.up.prevent="onUpBtnClick"
+                    @keydown.down.prevent="onDownBtnClick" 
+                    @keydown.left="onLeftBtnClick" 
+                    @keydown.right="onRightBtnClick"
+                    spellcheck="false" 
+                    autocomplete="off"
+                    autofocus
+                />
+                <button 
+                    v-if="keyword" 
+                    class="clear-btn" 
+                    @click="onResetSearch"
+                    :title="t('clear')"
+                >
+                    <X class="icon" />
+                </button>
+            </div>
+            <!-- Results list -->
+            <div 
+                class="recent" 
+                v-if="showRecent && recentItems.length > 0"
+                role="listbox"
+                :aria-label="t('recentItems')"
+            >
+                <div class="header">{{ t('recentItems') }}</div>
+                <ul class="list">
+                    <li 
+                        v-for="(item, index) in recentItems" 
+                        :key="'recent-' + index"
+                        class="item" 
+                        :id="'recent-item-' + index"
+                        role="option"
+                        :aria-selected="showRecent && index === curIndex"
+                        @click="onItemClick(item, index)" 
+                        :selected="showRecent && index === curIndex"
+                    >
+                        <span class="icon-wrapper">
+                            <component :is="getIcon(item.extname)" />
+                        </span>
+                        <div class="content">
+                            <div class="info">
+                                <span class="name">{{ item.name }}</span>
+                            </div>
+                            <div class="detail">
+                                <span class="path" :title="getPath(item.path)">{{ getPath(item.path) }}</span>
+                            </div>
+                        </div>
+                        <button class="folder-btn" :title="getOpenInFolderTooltip()" @click.stop="openInFolder(item)">
+                            <Folder class="icon" />
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <!-- Search Results -->
+            <div 
+                class="result" 
+                v-if="items.length > 0"
+                role="listbox"
+                :aria-label="t('searchResults')"
+            >
+                <ul class="list">
+                    <li 
+                        v-for="(item, index) in items" 
+                        :key="index"
+                        class="item" 
+                        :id="'item-' + index"
+                        role="option"
+                        :aria-selected="index === curIndex"
+                        @click="onItemClick(item, index)" 
+                        :selected="index === curIndex"
+                    >
+                        <span class="icon-wrapper">
+                            <component :is="getIcon(item.extname)" />
+                        </span>
+                        <div class="content">
+                            <div class="info">
+                                <span class="name">{{ item.name }}</span>
+                            </div>
+                            <div class="detail">
+                                <span class="path" :title="getPath(item.path)">{{ getPath(item.path) }}</span>
+                            </div>
+                        </div>
+                        <button class="folder-btn" :title="getOpenInFolderTooltip()" @click.stop="openInFolder(item)">
+                            <Folder class="icon" />
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

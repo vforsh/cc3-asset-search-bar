@@ -1,0 +1,75 @@
+{
+  "name": "cc3-asset-search-bar",
+  "package_version": 2,
+  "version": "1.0",
+  "description": "Quickly search and open assets in your Cocos Creator project",
+  "author": "Vladislav Forsh",
+  "email": "vforsh@gmail.com",
+  "repository": "https://github.com/vforsh/cc3-asset-search-bar",
+  "license": "MIT",
+  "main": "src/main/index.js",
+  "editor": ">=3.8.0",
+  "contributions": {
+    "menu": [
+      {
+        "path": "i18n:menu.extension/i18n:cc3-asset-search-bar.name",
+        "label": "i18n:cc3-asset-search-bar.search",
+        "message": "open-search-bar"
+      },
+      {
+        "path": "i18n:menu.extension/i18n:cc3-asset-search-bar.name",
+        "label": "i18n:cc3-asset-search-bar.settings",
+        "message": "open-settings-panel"
+      },
+      {
+        "path": "i18n:menu.extension/i18n:cc3-asset-search-bar.name",
+        "label": "i18n:cc3-asset-search-bar.checkUpdate",
+        "message": "menu-check-update"
+      }
+    ],
+    "messages": {
+      "open-search-bar": {
+        "public": true,
+        "description": "打开搜索栏",
+        "methods": [
+          "openSearchBar"
+        ]
+      },
+      "open-settings-panel": {
+        "public": true,
+        "description": "打开设置面板",
+        "methods": [
+          "openSettingsPanel"
+        ]
+      },
+      "menu-check-update": {
+        "public": true,
+        "description": "检查扩展是否有更新",
+        "methods": [
+          "menuCheckUpdate"
+        ]
+      },
+      "scene:ready": {
+        "methods": [
+          "onSceneReady"
+        ]
+      }
+    },
+    "shortcuts": [
+      {
+        "message": "open-search-bar",
+        "win": "F1",
+        "mac": "F1"
+      }
+    ]
+  },
+  "_storeId": "0e19e46b5df8576de6a6d3f59dd45ef4",
+  "dependencies": {
+    "fzf": "^0.5.2",
+    "lucide-vue-next": "^0.484.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.5.3",
+    "prettier-plugin-organize-imports": "^4.1.0"
+  }
+}
